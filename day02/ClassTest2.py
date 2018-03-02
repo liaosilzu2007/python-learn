@@ -7,6 +7,7 @@ class Student(object):
     def print_score(self):
         print('%s: %s' % (self.__name, self.__score))
 
+    # 可以定义get方法，通过方法来访问
     def get_name(self):
         return self.__name
 
