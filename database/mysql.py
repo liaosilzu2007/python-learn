@@ -29,10 +29,10 @@ cur = connection.cursor()
 
 
 '''更新'''
-update_sql = 'update book set price = %d where id = %d'
+update_sql = 'update book set price = %s where id = %s'
 try:
-    # 使用占位符的方式可以防止sql注入
-    effect_rows = cur.execute(update_sql % (59.5, 1))
+    # 使用占位符的方式可以防止sql注入，mysql的占位符是%s
+    effect_rows = cur.execute(update_sql % (66.5, 2))
 
     # 需要commit之后才能真正更新数据库
     connection.commit()
