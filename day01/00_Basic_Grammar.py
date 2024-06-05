@@ -1,10 +1,19 @@
 import sys
 
 # ================基本语法================
-# python中语句结尾不需要有标点符号。
+# 1.行与缩进
+# 与C++和JAVA不一样，python使用缩进来表示代码块，不需要使用大括号 {} 。缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数。
+'''
+if True:
+    print ("Answer")
+    print ("True")
+else:
+    print ("Answer")
+  print ("False")    # 缩进不一致，会导致运行错误
+'''
 
-# 1.多行语句
-# Python语句中一般以新行作为语句的结束符，但也可以使用斜杠（\）将一行的语句分为多行显示
+# 2.单行与多行语句
+# Python语句中一般以新行作为语句的结束符，每行代码结尾不需要有标点符号，但也可以使用斜杠（\）将一行的语句分为多行显示
 item_one = 'item_one'
 item_two = 'item_two'
 item_three = 'item_three'
@@ -12,19 +21,22 @@ total = item_one + \
         item_two + \
         item_three
 
-# 语句中包含 [], {} 或 () 括号就不需要使用多行连接符
+# 在 [], {}, 或 () 中的多行语句，就不需要使用多行连接符
 days = ['Monday', 'Tuesday', 'Wednesday',
         'Thursday', 'Friday']
 
+# 3.同一行多条语句
+# 每条语句用分号分隔
+line_item_1 = "line_item_1";line_item2 = "line_item2";print(line_item_1 + "," + line_item2)
 
-# 2.引号
+# 4.引号
 # Python中可以使用引号( ' )、双引号( " )、三引号( ''' 或 """ ) 来表示字符串。
 word = 'word'
 sentence = "这是一个句子。"
 paragraph = """这是一个段落。
 包含了多个语句"""
 
-# 3.注释
+# 5.注释
 # 单行注释使用‘#’号，多行注释使用三个单引号 ''' 或三个双引号 """。
 '''
 这是多行注释，使用单引号。
@@ -38,42 +50,16 @@ paragraph = """这是一个段落。
 这是多行注释，使用双引号。
 """
 
-# 4.同一行多条语句
-# 每条语句用分号分隔
-line_item_1 = "line_item_1";line_item2 = "line_item2";print(line_item_1 + "," + line_item2)
+# 6.导入
+'''
+import 与 from...import
+在 python 用 import 或者 from...import 来导入相应的模块。
 
-myList = ["taobao", "jingdong", "suning", "dangdang"]
-for ele in myList:
-    if ele == "suning":
-        print("跳出循环！")
-        break
-    print(ele)
+将整个模块(somemodule)导入，格式为： import somemodule
 
-print("===============")
+从某个模块中导入某个函数,格式为： from somemodule import somefunction
 
-for idx in range(len(myList)):
-    print(idx, myList[idx])
+从某个模块中导入多个函数,格式为： from somemodule import firstfunc, secondfunc, thirdfunc
 
-print("===============")
-
-for i, j in enumerate(myList):
-    print(i, j)
-
-print("===============")
-
-for i in range(100, 102):
-    print(i)
-
-it = iter(myList)
-print(next(it))
-print(next(it))
-# for x in it:
-#     print(x, end=";")
-
-print("\n===============")
-
-while True:
-    try:
-        print(next(it))
-    except StopIteration:
-        sys.exit()
+将某个模块中的全部函数导入，格式为： from somemodule import *
+'''
