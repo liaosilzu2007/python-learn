@@ -1,5 +1,7 @@
 # ================函数================
 import math
+from functools import reduce
+
 
 '''
 函数是组织好的，可重复使用的，用来实现单一，或相关联功能的代码段。
@@ -280,6 +282,7 @@ func_2(10, 20, 30, 40, 50, f=60)           # e 必须使用关键字参数的形
 Python 使用 lambda 来创建匿名函数。
 
 所谓匿名，意即不再使用 def 语句这样标准的形式定义一个函数。
+lambda 函数通常用于编写简单的、单行的函数，通常在需要函数作为参数传递的情况下使用，例如在 map()、filter()、reduce() 等函数中。
 
 (1) lambda 只是一个表达式，函数体比 def 简单很多。
 (2) lambda 的主体是一个表达式，而不是一个代码块。仅仅能在 lambda 表达式中封装有限的逻辑进去。
@@ -290,3 +293,39 @@ lambda 函数的语法只包含一个语句，如下：
 
 lambda [arg1 [,arg2,.....argn]]:expression
 '''
+# 示例
+sum = lambda arg1, arg2: arg1 + arg2
+ 
+# 调用sum函数
+print ("相加后的值为 : ", sum( 10, 20 ))        #输出：30
+print ("相加后的值为 : ", sum( 20, 20 ))        #输出：40
+
+#可以将匿名函数封装在一个函数内，这样可以使用同样的代码来创建多个匿名函数。
+#示例：以下实例将匿名函数封装在 myfunc 函数中，通过传入不同的参数来创建不同的匿名函数：
+def myfunc(n):
+  return lambda a : a * n
+ 
+mydoubler = myfunc(2)
+mytripler = myfunc(3)
+ 
+print(mydoubler(11))        #输出：22
+print(mytripler(11))        #输出：33
+
+# 示例：使用 lambda 函数与 map() 函数联合使用
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x**2, numbers))
+print(squared)  # 输出: [1, 4, 9, 16, 25]
+
+# 示例：使用 lambda 函数与 filter() 函数联合使用
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)  # 输出：[2, 4, 6, 8] 
+
+# 示例：使用 reduce() 和 lambda 函数计算累计乘积
+numbers = [1, 2, 3, 4, 5]
+product = reduce(lambda x, y: x * y, numbers)
+ 
+print(product)  # 输出：120   # reduce() 函数通过遍历 numbers 列表，并使用 lambda 函数将累积的结果不断更新，最终得到了 1 * 2 * 3 * 4 * 5 = 120 的结果。
+
+
+
