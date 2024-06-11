@@ -2,7 +2,7 @@
 
 # 1.条件控制语句
 # 1.1 if语句
-'''
+"""
 if语句的格式：
 
 if condition_1:
@@ -20,17 +20,17 @@ Python 中用 elif 代替了 else if，所以if语句的关键字为：if – el
 2、使用缩进来划分语句块，相同缩进数的语句在一起组成一个语句块。
 3、在 Python 中没有 switch...case 语句，但在 Python3.10 版本添加了 match...case，功能也类似，详见下文。
 
-'''
+"""
 var1 = 100
 if var1:
-    print ("1 - if 表达式条件为 true")
-    print (var1)
- 
+    print("1 - if 表达式条件为 true")
+    print(var1)
+
 var2 = 0
 if var2:
-    print ("2 - if 表达式条件为 true")
-    print (var2)
-print ("Good bye!")
+    print("2 - if 表达式条件为 true")
+    print(var2)
+print("Good bye!")
 
 '''
 执行以上代码，输出结果为：
@@ -104,18 +104,17 @@ counter = 1
 while counter <= n:
     sum = sum + counter
     counter += 1
- 
-print("1 到 %d 之和为: %d" % (n,sum))       # 输出：1 到 100 之和为: 5050
 
+print("1 到 %d 之和为: %d" % (n, sum))  # 输出：1 到 100 之和为: 5050
 
 # 2.1.1无限循环
 # 我们可以通过设置条件表达式永远不为 false 来实现无限循环，实例如下：
 var = 1
-while var == 1 :  # 表达式永远为 true
-   num = int(input("输入一个数字  :"))
-   print ("你输入的数字是: ", num)
- 
-print ("Good bye!")
+while var == 1:  # 表达式永远为 true
+    num = int(input("输入一个数字  :"))
+    print("你输入的数字是: ", num)
+
+print("Good bye!")
 
 '''
 执行以上脚本，输出结果如下：
@@ -142,14 +141,13 @@ else:
 运行逻辑：expr 条件语句为 true 则执行 statement(s) 语句块，如果为 false，则执行 additional_statement(s)。
 
 循环输出数字，并判断大小：
-''' 
+'''
 count = 0
 while count < 5:
-   print (count, " 小于 5")
-   count = count + 1
+    print(count, " 小于 5")
+    count = count + 1
 else:
-   print (count, " 大于或等于 5")
-
+    print(count, " 大于或等于 5")
 
 '''
 执行以上脚本，输出结果如下：
@@ -166,10 +164,10 @@ else:
 # 类似 if 语句的语法，如果你的 while 循环体中只有一条语句，你可以将该语句与 while 写在同一行中， 如下所示：
 
 flag = 1
- 
-while (flag): print ('欢迎访问Github!')
- 
-print ("Good bye!")
+
+while (flag): print('欢迎访问Github!')
+
+print("Good bye!")
 
 '''
 注意：以上的无限循环你可以使用 CTRL+C 来中断循环。
@@ -197,7 +195,7 @@ else:
     <statements>
 '''
 
-sites = ["Baidu", "Google","Runoob","Taobao"]
+sites = ["Baidu", "Google", "Runoob", "Taobao"]
 for site in sites:
     print(site)
 
@@ -211,9 +209,9 @@ Taobao
 '''
 
 # 也可用于打印字符串中的每个字符：
- 
+
 word = 'runoob'
- 
+
 for letter in word:
     print(letter)
 
@@ -256,9 +254,9 @@ else:
 当循环执行完毕（即遍历完 iterable 中的所有元素）后，会执行 else 子句中的代码，如果在循环过程中遇到了 break 语句，则会中断循环，此时不会执行 else 子句。
 '''
 for x in range(6):
-  print(x)
+    print(x)
 else:
-  print("Finally finished!")
+    print("Finally finished!")
 
 '''
 执行脚本后，输出结果为：
@@ -273,7 +271,7 @@ Finally finished!
 '''
 
 # 以下 for 实例中使用了 break 语句，break 语句用于跳出当前循环体，不会执行 else 子句：
-sites = ["Baidu", "Google","Runoob","Taobao"]
+sites = ["Baidu", "Google", "Runoob", "Taobao"]
 for site in sites:
     if site == "Runoob":
         print("菜鸟教程!")
@@ -298,19 +296,19 @@ break 语句可以跳出 for 和 while 的循环体。如果你从 for 或 while
 continue 语句是用来跳过当前循环块中的剩余语句，然后继续进行下一轮循环。
 '''
 # 示例：break的使用
-for letter in 'Runoob':     # 第一个实例
-   if letter == 'b':
-      break
-   print ('当前字母为 :', letter)
-  
-var = 10                    # 第二个实例
-while var > 0:              
-   print ('当前变量值为 :', var)
-   var = var -1
-   if var == 5:
-      break
- 
-print ("Good bye!")
+for letter in 'Runoob':  # 第一个实例
+    if letter == 'b':
+        break
+    print('当前字母为 :', letter)
+
+var = 10  # 第二个实例
+while var > 0:
+    print('当前变量值为 :', var)
+    var = var - 1
+    if var == 5:
+        break
+
+print("Good bye!")
 
 '''
 执行以上脚本输出结果为：
@@ -329,18 +327,18 @@ Good bye!
 '''
 
 # 示例：continue的使用
-for letter in 'Runoob':     # 第一个实例
-   if letter == 'o':        # 字母为 o 时跳过输出
-      continue
-   print ('当前字母 :', letter)
- 
-var = 10                    # 第二个实例
-while var > 0:              
-   var = var -1
-   if var == 5:             # 变量为 5 时跳过输出
-      continue
-   print ('当前变量值 :', var)
-print ("Good bye!")
+for letter in 'Runoob':  # 第一个实例
+    if letter == 'o':  # 字母为 o 时跳过输出
+        continue
+    print('当前字母 :', letter)
+
+var = 10  # 第二个实例
+while var > 0:
+    var = var - 1
+    if var == 5:  # 变量为 5 时跳过输出
+        continue
+    print('当前变量值 :', var)
+print("Good bye!")
 
 '''
 执行以上脚本输出结果为：
@@ -375,7 +373,7 @@ for i in range(5):
 '''
 
 # 你也可以使用 range() 指定区间的值：
-for i in range(5,9):
+for i in range(5, 9):
     print(i)
 '''
 输出：
@@ -386,7 +384,7 @@ for i in range(5,9):
 '''
 
 # 也可以使 range() 以指定数字开始并指定不同的增量(甚至可以是负数，有时这也叫做'步长'):
-for i in range(0, 10, 3) :
+for i in range(0, 10, 3):
     print(i)
 '''
 输出：
@@ -396,7 +394,7 @@ for i in range(0, 10, 3) :
 9
 '''
 
-for i in range(-10, -100, -30) :
+for i in range(-10, -100, -30):
     print(i)
 '''
 输出：
@@ -419,8 +417,7 @@ for i in range(len(a)):
 '''
 
 # 还可以使用 range() 函数来创建一个列表：
-b=list(range(5))      [0, 1, 2, 3, 4]
-
+b = list(range(5))  # 输出：[0, 1, 2, 3, 4]
 
 # 2.5 pass语句
 '''
@@ -428,13 +425,13 @@ Python pass是空语句，是为了保持程序结构的完整性。
 
 pass 不做任何事情，一般用做占位语句，如下实例
 '''
-for letter in 'Runoob': 
-   if letter == 'o':
-      pass
-      print ('执行 pass 块')
-   print ('当前字母 :', letter)
- 
-print ("Good bye!")
+for letter in 'Runoob':
+    if letter == 'o':
+        pass
+        print('执行 pass 块')
+    print('当前字母 :', letter)
+
+print("Good bye!")
 
 '''
 执行以上脚本输出结果为：

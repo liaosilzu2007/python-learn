@@ -2,7 +2,6 @@
 import math
 from functools import reduce
 
-
 '''
 函数是组织好的，可重复使用的，用来实现单一，或相关联功能的代码段。
 
@@ -14,11 +13,15 @@ def 函数名（参数列表）:
     函数体
 '''
 
+
 # 1.定义并使用函数
 # 示例：使用函数来输出"Hello World！"：
-def hello() :
-    print("Hello World!")                
-hello()                             #输出：Hello World!
+def hello():
+    print("Hello World!")
+
+
+hello()  # 输出：Hello World!
+
 
 # 示例：带参数的函数，比较两个数，并返回较大的数:
 def max(a, b):
@@ -26,12 +29,11 @@ def max(a, b):
         return a
     else:
         return b
- 
+
+
 a = 4
 b = 5
-print(max(a, b))                    #输出：5
-
-
+print(max(a, b))  # 输出：5
 
 # 2.参数传递
 '''
@@ -57,14 +59,17 @@ python 函数的参数传递：
 
 python 中一切都是对象，严格意义我们不能说值传递还是引用传递，我们应该说传不可变对象和传可变对象。
 '''
+
+
 # 2.1 传不可变对象实例
 # 示例：通过 id() 函数来查看内存地址变化：
 def change(a):
-    print(id(a))   # 指向的是同一个对象
-    a=10
-    print(id(a))   # 一个新对象
- 
-a=1
+    print(id(a))  # 指向的是同一个对象
+    a = 10
+    print(id(a))  # 一个新对象
+
+
+a = 1
 print(id(a))
 change(a)
 '''
@@ -80,15 +85,16 @@ change(a)
 # 2.2传可变对象实例
 # 示例：可变对象在函数里修改了参数，那么在调用这个函数的函数里，原始的参数也被改变了。例如：
 def changelist(mylist):
-   "修改传入的列表"
-   mylist.append([1,2,3,4])
-   print ("函数内取值: ", mylist)
-   return
- 
+    "修改传入的列表"
+    mylist.append([1, 2, 3, 4])
+    print("函数内取值: ", mylist)
+    return
+
+
 # 调用changeme函数
-mylist = [10,20,30]
-changelist( mylist )
-print ("函数外取值: ", mylist)
+mylist = [10, 20, 30]
+changelist(mylist)
+print("函数外取值: ", mylist)
 
 '''
 传入函数的和在末尾添加新内容的对象用的是同一个引用。故输出结果如下：
@@ -111,12 +117,15 @@ print ("函数外取值: ", mylist)
 '''
 必需参数须以正确的顺序传入函数。调用时的数量必须和声明时的一样。
 '''
+
+
 # 示例：调用 printme() 函数，你必须传入一个参数，不然会出现语法错误：
-def printme( str ):
-   "打印任何传入的字符串"
-   print (str)
-   return
- 
+def printme(str):
+    "打印任何传入的字符串"
+    print(str)
+    return
+
+
 # 调用 printme 函数，不加参数会报错
 printme()
 '''
@@ -128,19 +137,21 @@ Traceback (most recent call last):
 TypeError: printme() missing 1 required positional argument: 'str'
 '''
 
-
 # 3.2 关键字参数
 '''
 使用关键字参数允许函数调用时参数的顺序与声明时不一致，因为 Python 解释器能够用参数名匹配参数值。
 '''
-def printinfo_1( name, age ):
-   "打印任何传入的字符串"
-   print ("名字: ", name)
-   print ("年龄: ", age)
-   return
- 
+
+
+def printinfo_1(name, age):
+    "打印任何传入的字符串"
+    print("名字: ", name)
+    print("年龄: ", age)
+    return
+
+
 #调用 printinfo_1 函数
-printinfo_1( age=50, name="Jack" )
+printinfo_1(age=50, name="Jack")
 
 '''
 以上实例输出结果：
@@ -153,17 +164,20 @@ printinfo_1( age=50, name="Jack" )
 '''
 调用函数时，如果没有传递参数，则会使用默认参数。
 '''
+
+
 # 实列：如果没有传入 age 参数，则使用默认值：
-def printinfo_2( name, age = 35 ):
-   "打印任何传入的字符串"
-   print ("名字: ", name)
-   print ("年龄: ", age)
-   return
- 
+def printinfo_2(name, age=35):
+    "打印任何传入的字符串"
+    print("名字: ", name)
+    print("年龄: ", age)
+    return
+
+
 #调用 printinfo_2 函数
-printinfo_2( age=50, name="Jack" )
-print ("------------------------")
-printinfo_2( name="Jack" )
+printinfo_2(age=50, name="Jack")
+print("------------------------")
+printinfo_2(name="Jack")
 
 '''
 以上实例输出结果：
@@ -187,15 +201,18 @@ def 函数名([formal_args,] *var_args_tuple ):
 def 函数名([formal_args,] **var_args_dict ):
     函数体
 '''
+
+
 # 示例：传入元组类型的可变参数
-def printinfo_3( arg1, *vartuple ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   print (vartuple)
- 
+def printinfo_3(arg1, *vartuple):
+    "打印任何传入的参数"
+    print("输出: ")
+    print(arg1)
+    print(vartuple)
+
+
 # 调用 printinfo_3 函数
-printinfo_3( 70, 60, 50 )
+printinfo_3(70, 60, 50)
 
 '''
 以上实例输出结果：
@@ -204,18 +221,21 @@ printinfo_3( 70, 60, 50 )
 70
 (60, 50)
 '''
+
+
 # 如果在函数调用时没有指定参数，它就是一个空元组。我们也可以不向函数传递未命名的变量。如下实例：
-def printinfo_4( arg1, *vartuple ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   for var in vartuple:
-      print (var)
-   return
- 
+def printinfo_4(arg1, *vartuple):
+    "打印任何传入的参数"
+    print("输出: ")
+    print(arg1)
+    for var in vartuple:
+        print(var)
+    return
+
+
 # 调用 printinfo_4 函数
-printinfo_4( 10 )
-printinfo_4( 70, 60, 50 )
+printinfo_4(10)
+printinfo_4(70, 60, 50)
 
 '''
 以上实例输出结果：
@@ -228,30 +248,33 @@ printinfo_4( 70, 60, 50 )
 50
 '''
 
+
 # 声明函数时，参数中星号 * 可以单独出现，例如:
-def fun_01(a,b,*,c):
-    return a+b+c
+def fun_01(a, b, *, c):
+    return a + b + c
+
 
 # 注意：如果单独出现星号 *，则星号 * 后的参数必须用关键字传入
-fun_01(1,2,3)           # 报错
+fun_01(1, 2, 3)  # 报错
 '''
 报错如下：
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: f() takes 2 positional arguments but 3 were given
 '''
-fun_01(1,2,c=3)         # 正常
+fun_01(1, 2, c=3)  # 正常
 
 
 # 示例：传入字典类型的可变参数
-def printinfo_5( arg1, **vardict ):
-   "打印任何传入的参数"
-   print ("输出: ")
-   print (arg1)
-   print (vardict)
- 
+def printinfo_5(arg1, **vardict):
+    "打印任何传入的参数"
+    print("输出: ")
+    print(arg1)
+    print(vardict)
+
+
 # 调用 printinfo_5 函数
-printinfo_5(1, a=2,b=3)
+printinfo_5(1, a=2, b=3)
 
 '''
 以上实例输出结果：
@@ -266,16 +289,18 @@ printinfo_5(1, a=2,b=3)
 Python3.8 新增了一个函数形参语法 / 用来指明函数形参必须使用指定位置参数，不能使用关键字参数的形式。
 '''
 
+
 # 在以下的例子中，形参 a 和 b 必须使用指定位置参数，c 或 d 可以是位置形参或关键字形参，而 e 和 f 要求为关键字形参:
 def func_2(a, b, /, c, d, *, e, f):
     print(a, b, c, d, e, f)
+
+
 #以下使用方法是正确的:
 func_2(10, 20, 30, d=40, e=50, f=60)
 
 #以下使用方法会发生错误:
-func_2(10, b=20, c=30, d=40, e=50, f=60)   # b 不能使用关键字参数的形式
-func_2(10, 20, 30, 40, 50, f=60)           # e 必须使用关键字参数的形式
-
+func_2(10, b=20, c=30, d=40, e=50, f=60)  # b 不能使用关键字参数的形式
+func_2(10, 20, 30, 40, 50, f=60)  # e 必须使用关键字参数的形式
 
 # 5.匿名函数（lambda函数）
 '''
@@ -295,25 +320,27 @@ lambda [arg1 [,arg2,.....argn]]:expression
 '''
 # 示例
 sum = lambda arg1, arg2: arg1 + arg2
- 
+
 # 调用sum函数
-print ("相加后的值为 : ", sum( 10, 20 ))        #输出：30
-print ("相加后的值为 : ", sum( 20, 20 ))        #输出：40
+print("相加后的值为 : ", sum(10, 20))  #输出：30
+print("相加后的值为 : ", sum(20, 20))  #输出：40
+
 
 #可以将匿名函数封装在一个函数内，这样可以使用同样的代码来创建多个匿名函数。
 #示例：以下实例将匿名函数封装在 myfunc 函数中，通过传入不同的参数来创建不同的匿名函数：
 def myfunc(n):
-  return lambda a : a * n
- 
+    return lambda a: a * n
+
+
 mydoubler = myfunc(2)
 mytripler = myfunc(3)
- 
-print(mydoubler(11))        #输出：22
-print(mytripler(11))        #输出：33
+
+print(mydoubler(11))  #输出：22
+print(mytripler(11))  #输出：33
 
 # 示例：使用 lambda 函数与 map() 函数联合使用
 numbers = [1, 2, 3, 4, 5]
-squared = list(map(lambda x: x**2, numbers))
+squared = list(map(lambda x: x ** 2, numbers))
 print(squared)  # 输出: [1, 4, 9, 16, 25]
 
 # 示例：使用 lambda 函数与 filter() 函数联合使用
@@ -324,8 +351,5 @@ print(even_numbers)  # 输出：[2, 4, 6, 8]
 # 示例：使用 reduce() 和 lambda 函数计算累计乘积
 numbers = [1, 2, 3, 4, 5]
 product = reduce(lambda x, y: x * y, numbers)
- 
+
 print(product)  # 输出：120   # reduce() 函数通过遍历 numbers 列表，并使用 lambda 函数将累积的结果不断更新，最终得到了 1 * 2 * 3 * 4 * 5 = 120 的结果。
-
-
-
