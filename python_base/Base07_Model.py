@@ -1,4 +1,4 @@
-# ================模塊================
+# ================模块================
 """
 我们可以使用 python 解释器来编程，但如果从 Python 解释器退出再进入，那么定义的所有的方法和变量就都消失了。
 
@@ -17,9 +17,9 @@ os.path.dirname(os.path.abspath(file))获取到的是当前文件所在目录的
 os.path.dirname(os.path.dirname(os.path.abspath(file)))获取到的是当前文件所在目录的上一级目录（本项目是 python-learn 目录）的路径。
 使用sys.append()命令把路径添加到环境变量后，才可以导入python-learn 目录下的各个模块
 '''
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-import python_base.Base05_Function
+# import Base05_Function
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# import python_base.Base05_Function
 
 #
 print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -76,13 +76,61 @@ from modname import *
 在导入一个包的时候，Python 会根据 sys.path 中的目录来寻找这个包中包含的子目录。
 
 目录只有包含一个叫做 __init__.py 的文件才会被认作是一个包，最简单的情况，放一个空的 :file:__init__.py就可以了。
+如下图是一个python项目的目录结构：
+sound/                          顶层包
+      __init__.py               初始化 sound 包
+      formats/                  文件格式转换子包
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      effects/                  声音效果子包
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      filters/                  filters 子包
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
 
 如果包定义文件 __init__.py 存在一个叫做 __all__ 的列表变量，那么在使用 from package import * 的时候就把这个列表中的所有名字作为包内容导入。
-以下实例在 file:sounds/effects/__init__.py 中包含如下代码:
+例如在 file:sounds/effects/__init__.py 中包含如下代码:
 __all__ = ["echo", "surround", "reverse"]
-这表示当你使用from sound.effects import *这种用法时，你只会导入包里面这三个子模块。
+这表示当使用from sound.effects import *这种用法时，只会导入包里面这三个子模块。
 
 通常我们并不主张使用 * 这种方法来导入模块，因为这种方法经常会导致代码的可读性降低。不过这样倒的确是可以省去不少敲键的功夫，而且一些模块都设计成了只能通过特定的方法导入。
 记住，使用 from Package import specific_submodule 这种方法永远不会有错。事实上，这也是推荐的方法。除非是你要导入的子模块有可能和其他包的子模块重名。
 '''
+
+# 4.__name__属性
+'''
+一个模块被另一个程序第一次引入时，其主程序将运行。如果我们想在模块被引入时，模块中的某一程序块不执行，我们可以用__name__属性来使该程序块仅在该模块自身运行时执行。
+'''
+# !/usr/bin/python3
+# Filename: using_name.py
+
+if __name__ == '__main__':
+   print('程序自身在运行')
+else:
+   print('我来自另一模块')
+
+'''
+运行输出如下：
+
+$ python using_name.py
+程序自身在运行
+$ python
+>>> import using_name
+我来自另一模块
+>>>
+'''
+# 说明： 每个模块都有一个__name__属性，当其值是'__main__'时，表明该模块自身在运行，否则是被引入。注意：__name__ 两边是双下划线。
 
